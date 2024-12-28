@@ -8,7 +8,6 @@ app.use(cors());
 
 connectToDb();
 
-
 app.get('/', (req, res)=>{
     res.send("Hello world");
 })
