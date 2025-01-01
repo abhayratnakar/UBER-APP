@@ -12,7 +12,7 @@
     -> require mongoose and use and create a simple function to connect our mongoose with project using connect function of mongoose now export that function for Ex conntectToDb();
     -> now import it in our app.js and call this function there. 
 
-*******Login Functionality's*******
+*******Register Functionality's*******
 4) model setup :- Create models folder
     1) user.model.js
        ->  Now create user.model.js and create one include all the properties and functionality that userModel can have.
@@ -35,11 +35,12 @@
     2) Now our hole process of user is almost finished here the last thing which is creation of Route is remaining.
 
 7) Routing setup :- Create routes folder
-    1) user.route.js
+    1) user.routes.js
     -> Create user.route.js file to create all user related routes here.
     -> create roter namely '/register and give all the validation and then after validation call registerUser function of userController 
     -> now export that roter 
     2) Calling this route in app.js
         -> go to app.js and use that /register route like
             Ex:- app.use('/users', {require that route here});
+    3) 
 

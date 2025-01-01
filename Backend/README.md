@@ -62,3 +62,70 @@ The request body should be a JSON object containing the following fields:
 ### Notes
 - The `password` field is hashed before being stored in the database.
 - The `token` field in the response is a JWT token that can be used for authentication.
+
+# User Login Endpoint
+
+## POST /users/login
+
+### Description
+This endpoint is used to log in an existing user. It requires the user's email and password.
+
+### Request Body
+The request body should be a JSON object containing the following fields:
+- `email`: The user's email address (must be a valid email).
+- `password`: The user's password (minimum 6 characters).
+
+### Example Request
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+```
+
+### Responses
+
+#### Success
+- **Status Code**: 200 OK
+- **Response Body**:
+  ```json
+  {
+    "token": "jwt-token",
+    "user": {
+      "_id": "user-id",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "john.doe@example.com"
+    }
+  }
+  ```
+
+#### Validation Errors
+- **Status Code**: 400 Bad Request
+- **Response Body**:
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Error message",
+        "param": "parameter",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
+#### Authentication Errors
+- **Status Code**: 401 Unauthorized
+- **Response Body**:
+  ```json
+  {
+    "message": "Invalid email or password"
+  }
+  ```
+
+### Notes
+- The `password` field is hashed before being compared with the stored password.
+- The `token` field in the response is a JWT token that can be used for authentication.
