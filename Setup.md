@@ -35,12 +35,42 @@
     2) Now our hole process of user is almost finished here the last thing which is creation of Route is remaining.
 
 7) Routing setup :- Create routes folder
-    1) user.routes.js
-    -> Create user.route.js file to create all user related routes here.
-    -> create roter namely '/register and give all the validation and then after validation call registerUser function of userController 
-    -> now export that roter 
-    2) Calling this route in app.js
-        -> go to app.js and use that /register route like
+    1) user.routes.js:- Create user.route.js file to create all user related routes here.
+        1) /register 
+            ->create roter of method post and namely '/register and give all the validation and then after validation call registerUser() controller of userController and then export router and call this perticular route in app.js use that /register route like
             Ex:- app.use('/users', {require that route here});
-    3) 
+        
+        2) /login 
+            -> Create router of method post and namely /login and give all the validation to it and make loginUser() controller in userController and call that here after validation.
+            -> Creation of loginUser() in userController
+                => Create a loginUser() function to write all login user functionality and create error function to see that any error is coming or not from that middleware which we used in user.router.js for /login route.
+                => then take all credentials from user and see that user exists in our user array of not if exists then chech their password matches of not by using comparePassword() if matches then give that user a token using generateAuthToken();
+                => and send res to cookie to set this token
+                => Now it's time to create Profile routes
+        
+        3) /profile
+            ->  Create router of method get and namely /profile make getUserProfile() function in userController and call that here.
+            -> Create a getUserProfile() controller in userController
+                => before go to profile route we need one middleware which checks that user is having token or not there for we Create another folder namely middleware
+                
+                => middleware setup:- create middleware folder 
+                    1) create auth.middleware.js middleware here related to authentication
+                        -> import jwt, userModel and bcrypt here
+                        1) authUser()
+                            -> Create authUser() to see that user is having token or not
+                            -> import cookie-parser and require that in app.js and use that 
+                            -> first see that token exist in cookies or in header if exists then decode that using verify function of jwt and after decoded we get only that data which given while creation of token in our case we have given _id to token
+                            -> now find that perticular user in our userModel by using that decoded._id using findById()
+                            -> once you found that user then return to next();
+                            -> finally export this middleware
+                
+                => Now call that authUser() middleware before calling getUserProfile() controller and then call this getUserProfle() controller
+
+        4) /logout
+        
+
+
+                        
+
+
 
