@@ -49,7 +49,7 @@
                 => Now it's time to create Profile routes
         
         3) /profile
-            ->  Create router of method get and namely /profile make getUserProfile() function in userController and call that here.
+            ->  Create router of method get and namely /profile make getUserProfile() controller in userController and call that here.
             -> Create a getUserProfile() controller in userController
                 => before go to profile route we need one middleware which checks that user is having token or not there for we Create another folder namely middleware
                 
