@@ -129,3 +129,69 @@ The request body should be a JSON object containing the following fields:
 ### Notes
 - The `password` field is hashed before being compared with the stored password.
 - The `token` field in the response is a JWT token that can be used for authentication.
+
+# User Profile Endpoint
+
+## GET /users/profile
+
+### Description
+This endpoint is used to get the profile of the authenticated user.
+
+### Responses
+
+#### Success
+- **Status Code**: 200 OK
+- **Response Body**:
+  ```json
+  {
+    "_id": "user-id",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com"
+  }
+  ```
+
+#### Authentication Errors
+- **Status Code**: 401 Unauthorized
+- **Response Body**:
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+### Notes
+- This endpoint requires a valid JWT token in the `Authorization` header or `token` cookie.
+
+# User Logout Endpoint
+
+## GET /users/logout
+
+### Description
+This endpoint is used to log out the authenticated user.
+
+### Responses
+
+#### Success
+- **Status Code**: 200 OK
+- **Response Body**:
+  ```json
+  {
+    "message": "Logged out successfully"
+  }
+  ```
+
+#### Authentication Errors
+- **Status Code**: 401 Unauthorized
+- **Response Body**:
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+### Notes
+- This endpoint requires a valid JWT token in the `Authorization` header or `token` cookie.
+- The token is blacklisted after logout to prevent reuse.

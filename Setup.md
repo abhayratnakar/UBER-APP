@@ -5,19 +5,19 @@
     -> Create app.js file and require express and create "/" route in that and export that
     -> import dotenv to store all personal details and use cors to achieve cors policy.
 2) server..js
-    -> Now it's time to create server, require http and user createServer method and give that our exported app and make our server to listen on a perticular port useing listen function
+    -> Now it's time to create server, require http and user createServer method and give that our exported app and make our server to listen on a perticular port using listen function
 
 3) Database :- Db/Db.js
     -> Now Create a folder Db which stores all database related files and folders then create Db.js in that
-    -> require mongoose and use and create a simple function to connect our mongoose with project using connect function of mongoose now export that function for Ex conntectToDb();
+    -> require mongoose and use and create a simple function to connect our mongoose with project using connect function of mongoose now export that function for Example conntectToDb();
     -> now import it in our app.js and call this function there. 
 
 *******Register Functionality's*******
 4) model setup :- Create models folder
     1) user.model.js
-       ->  Now create user.model.js and create one include all the properties and functionality that userModel can have.
+       ->  Now create user.model.js to write all the properties and functionality that userModel can have.
        -> require mongoose and user Schema of that to create Schema and in that schema mention all the properties which user can have.
-       -> use model function of mongoose to create a model give your scema to that function and give a perticular keyword and then export that model.
+       -> use model function of mongoose to create a model give your schema to that function and give a perticular keyword and then export that model.
 
 5)  Services setup :- Create services folder
     1) user.service.js
@@ -67,7 +67,16 @@
                 => Now call that authUser() middleware before calling getUserProfile() controller and then call this getUserProfle() controller
 
         4) /logout
-        
+           => create router of method get and namely /logout make logoutUser controller in userController and call that here
+           and before that call authUser middleware also here.
+
+           => Let's create logoutUser controller now in that first clear the cookie using clearCookie() namely 'token' and with that the token which we are getting that also we need to do clear and blacklisted 
+                -> for that first recieve that token from header or from cookies 
+                -> Make new model namely blackListToken Model in models folder and call that here in logoutUser controller.
+                -> Now let's make model
+                    i have created create model by using copilot of vscode and exported that 
+                -> Now call that create model here.
+                
 
 
                         
